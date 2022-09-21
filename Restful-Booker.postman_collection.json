@@ -1,0 +1,360 @@
+{
+	"info": {
+		"_postman_id": "314fa52a-ec5d-4da6-a236-2ab9708331e4",
+		"name": "Restful-Booker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23441552"
+	},
+	"item": [
+		{
+			"name": "CreateToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.collectionVariables.set(\"token\", jsonData.token);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"username\": \"admin\",\n\"password\": \"password123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/auth",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateBooking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.collectionVariables.set(\"bookingId\", jsonData.bookingid);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\": \"Marsel\",\n    \"lastname\":\"Khayrullin\",\n    \"totalprice\" : \"1300\",\n    \"depositpaid\" : \"true\",\n    \"bookingdates\":{\n      \"checkin\" : \"2022-05-09\",\n      \"checkout\": \"2022-05-19\"\n},\n    \"additionalneeds\" : \"Taxi\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PartialUpdate",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token={{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"totalprice\":\"1000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking/{{bookingId}}",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking",
+						"{{bookingId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateBooking Charles Breakpoint firstname",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\": \"Marsel\",\n    \"lastname\":\"Khayrullin\",\n    \"totalprice\" : \"1300\",\n    \"depositpaid\" : \"true\",\n    \"bookingdates\":{\n      \"checkin\" : \"2022-05-09\",\n      \"checkout\": \"2022-05-19\"\n},\n    \"additionalneeds\" : \"Taxi\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CreateBooking Charles Breakpoint firstname",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstname\": \"Marsel\",\n    \"lastname\":\"Khayrullin\",\n    \"totalprice\" : \"1300\",\n    \"depositpaid\" : \"true\",\n    \"bookingdates\":{\n      \"checkin\" : \"2022-05-09\",\n      \"checkout\": \"2022-05-19\"\n},\n    \"additionalneeds\" : \"Taxi\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://restful-booker.herokuapp.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"c9-xCQ99r0idoaDlbMbJZZ0zygMUGI\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 20 Sep 2022 06:19:27 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						},
+						{
+							"key": "Content-Length",
+							"value": "246"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"bookingid\": 9519,\n    \"booking\": {\n        \"firstname\": \"Danil\",\n        \"lastname\": \"Khayrullin\",\n        \"totalprice\": 1300,\n        \"depositpaid\": true,\n        \"bookingdates\": {\n            \"checkin\": \"2022-05-09\",\n            \"checkout\": \"2022-05-19\"\n        },\n        \"additionalneeds\": \"Taxi\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CreateBooking Charles Rewrite Status code",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\": \"Marsel\",\n    \"lastname\":\"Khayrullin\",\n    \"totalprice\" : \"1300\",\n    \"depositpaid\" : \"true\",\n    \"bookingdates\":{\n      \"checkin\" : \"2022-05-09\",\n      \"checkout\": \"2022-05-19\"\n},\n    \"additionalneeds\" : \"Taxi\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CreateBooking Charles Rewrite Status code",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstname\": \"Marsel\",\n    \"lastname\":\"Khayrullin\",\n    \"totalprice\" : \"1300\",\n    \"depositpaid\" : \"true\",\n    \"bookingdates\":{\n      \"checkin\" : \"2022-05-09\",\n      \"checkout\": \"2022-05-19\"\n},\n    \"additionalneeds\" : \"Taxi\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://restful-booker.herokuapp.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "201"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"c9-XBEIZ2jfaYp/D3pbdgLSOGkRLyw\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 20 Sep 2022 06:21:21 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"bookingid\": 9537,\n    \"booking\": {\n        \"firstname\": \"Marsel\",\n        \"lastname\": \"Khayrullin\",\n        \"totalprice\": 1300,\n        \"depositpaid\": true,\n        \"bookingdates\": {\n            \"checkin\": \"2022-05-09\",\n            \"checkout\": \"2022-05-19\"\n        },\n        \"additionalneeds\": \"Taxi\"\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "bookingId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
